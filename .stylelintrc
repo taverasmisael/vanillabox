@@ -1,0 +1,8 @@
+
+{
+	"extends": "stylelint-config-sass-guidelines",
+	"rules": {
+		"selector-class-pattern": "^(?:(?:o|c|u|t|s|is|has|_|js|qa)-)?[a-z]+(?:-[a-z]+)*(?:__[a-z]+(?:-[a-z]+)*)?(?:--[a-z]+(?:-[a-z]+)*)?(?:\\[.+\\])?$",
+		"max-nesting-depth": 3
+	}
+}

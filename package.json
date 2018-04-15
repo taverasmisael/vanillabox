@@ -11,7 +11,9 @@
     "start": "webpack --mode development --watch",
     "build": "webpack --mode production",
     "test": "jest",
-    "lint": "tslint -c tslint.json 'src/**/*.ts'",
+    "lint:ts": "tslint -c tslint.json 'src/**/*.ts'",
+    "lint:sass": "stylelint src/scss",
+    "lint": "npm run lint:sass && npm run lint:ts",
     "prerelease": "test && lint",
     "release": "standard-version",
     "test:watch": "jest --watch",
@@ -23,14 +25,7 @@
       "^.+\\.tsx?$": "ts-jest"
     },
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ]
+    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"]
   },
   "keywords": [],
   "author": "Misael Taveras (https://github.com/taverasmisael)",
