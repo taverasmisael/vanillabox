@@ -1,6 +1,7 @@
 # VanillaBox
 
 Vanilla Js to create beautiful Lightbox without dependencies. It uses [A11Y-dialog](https://github.com/edenspiekermann/a11y-dialog) to address the Lightbox modal and accessibility.
+![](readme/5548C8ED-C2BB-483F-A135-148D2B996BD7.png)
 
 ## Features
 
@@ -19,6 +20,7 @@ Vanilla Js to create beautiful Lightbox without dependencies. It uses [A11Y-dial
 ✔️ Build with the powerful SASS so you can customize as much as you want
 
 ✔️ Highly customizable _(in progress)_
+
 ✔️ Tested with Jest _(in progress)_
 
 ## Getting Started
@@ -85,7 +87,7 @@ $animation-timming: cubic-bezier(0.86, 0, 0.07, 1); //timming-function
 Add a good `link` tag at any place in your html file pointing to our precompiled css file
 
 ```html
-	<link href="./node_modules/vanillabox/dist/main.css" re="stylesheet">
+<link href="./node_modules/vanillabox/dist/main.css" re="stylesheet">
 ```
 
 ### The HTML
@@ -106,17 +108,11 @@ I decided to be very liberal with the markup and let decide to you. Even thou, w
     <div class="lightbox-overlay" tabindex="-1" data-a11y-dialog-hide></div>
     <div role="dialog" class="lightbox">
       <button type="button" class="lightbox__close" data-a11y-dialog-hide aria-label="Cerrar lightbox">
-        <svg fill="#fff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
-          <path d="M0 0h24v24H0z" fill="none" />
-        </svg><!-- this is an Material Icon for an arrow-->
+        ⬅️
       </button>
       <div role="document" aria-labelledby="lightbox__image">
         <button class="lightbox-controls__prev" data-action="prev" aria-label="Imagen Anterior">
-          <svg fill="#fff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
-            <path d="M0 0h24v24H0z" fill="none" />
-          </svg>
+          ➡️
         </button>
         <button class="lightbox-controls__next" data-action="next" aria-label="Imagen Siguiente">
           <svg fill="#fff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(180deg);">
@@ -145,6 +141,8 @@ I decided to be very liberal with the markup and let decide to you. Even thou, w
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/taverasmisael/vanillabox/tags).
 
+Each release is done with the help of [StandardVersion](https://github.com/conventional-changelog/standard-version)
+
 ## Changelog
 
 See a full list of changes on our [Changelog](CHANGELOG.md) file
@@ -155,7 +153,7 @@ See a full list of changes on our [Changelog](CHANGELOG.md) file
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 ## Acknowledgments
 
@@ -164,7 +162,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * Need
 
 ## What’s next?
-
+* Add keyboard support
 * Add Jest test
 * Add more freedom to choose the markup and other configs
 * Add events
