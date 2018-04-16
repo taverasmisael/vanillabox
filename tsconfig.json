@@ -8,6 +8,6 @@
     "strict": true,
     "sourceMap": true,
     "lib": ["es2016", "dom"],
-    "typeRoots": ["node_modules/@types"]
+    "typeRoots": ["node_modules/@types", "src/"]
   }
 }
