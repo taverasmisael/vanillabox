@@ -1,5 +1,4 @@
 // typings.d.ts
-import '@babel/polyfill'
 import A11yDialog from 'a11y-dialog'
 import {
   getIndex,
@@ -8,7 +7,8 @@ import {
   toggleBodyOverflow,
   updateImage
 } from './helpers'
-import('./scss/main.scss')
+
+import './scss/main.scss'
 
 export interface ILightboxConfig {
   GalleryImages: HTMLImageElement[]
@@ -16,7 +16,7 @@ export interface ILightboxConfig {
   animationClass: string
 }
 
-export default ({ GalleryImages, Lightbox, animationClass }: ILightboxConfig) => {
+const VanillaBox = ({ GalleryImages, Lightbox, animationClass }: ILightboxConfig) => {
   if (!GalleryImages) {
     return
   }
@@ -49,3 +49,5 @@ export default ({ GalleryImages, Lightbox, animationClass }: ILightboxConfig) =>
     })
   )
 }
+
+export default VanillaBox
