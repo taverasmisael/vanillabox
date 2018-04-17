@@ -1,4 +1,8 @@
 type GetIndexAction = 'PREV' | 'NEXT'
+
+export class ImageType {
+  constructor(public src: string, public alt: string) {}
+}
 export const toggleBodyOverflow = () => {
   document.body.style.overflowY = document.body.style.overflowY === 'hidden' ? 'initial' : 'hidden'
 }
@@ -14,6 +18,13 @@ export const getIndex = (top: number, current: number, action: GetIndexAction) =
   }
 }
 
+export const mapElementsToImageLike = (elements: any[]) =>
+  elements.map(element => {
+    const SRC = element.tagName === 'IMG' ? element.src : element.dataset.lightboxImage || ''
+    const ALT = element.alt ? element.alt : element.getAttribute('aria-label') || ''
+    return new ImageType(SRC, ALT)
+  })
+
 export const changeSource = (imageElement: HTMLImageElement, newSource: string) =>
   new Promise((resolve, reject) => {
     const img = new Image()
@@ -24,7 +35,7 @@ export const changeSource = (imageElement: HTMLImageElement, newSource: string) 
   })
 
 export const updateImage = (
-  GalleryImages: HTMLImageElement[],
+  GalleryImages: ImageType[],
   LightboxImage: HTMLImageElement,
   animationClass: string
 ) => (index: number) => {

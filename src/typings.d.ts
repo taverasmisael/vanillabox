@@ -3,6 +3,7 @@ declare module 'a11y-dialog' {
     public show: () => void
     public hide: () => void
     public on: (event: string, cb: () => void) => void
+    shown: boolean
     constructor(el: Element)
   }
 }

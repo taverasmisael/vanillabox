@@ -3,6 +3,7 @@ import A11yDialog from 'a11y-dialog'
 import {
   getIndex,
   getLightboxImage,
+  mapElementsToImageLike,
   removeAnimationClass,
   toggleBodyOverflow,
   updateImage
@@ -22,11 +23,12 @@ const VanillaBox = ({ GalleryImages, Lightbox, animationClass }: ILightboxConfig
   }
   let currentIndex = 0
   const LightboxDialog = new A11yDialog(Lightbox)
-  const ImagesLength = GalleryImages.length
+  const Images = mapElementsToImageLike([...GalleryImages])
+  const ImagesLength = Images.length
   const LightboxImage = getLightboxImage(Lightbox)
   const PrevButton = Lightbox.querySelector('[data-action="prev"]')
   const NextButton = Lightbox.querySelector('[data-action="next"]')
-  const changeImage = updateImage(GalleryImages, LightboxImage, animationClass)
+  const changeImage = updateImage(Images, LightboxImage, animationClass)
 
   // AddEventListener
   LightboxDialog.on('show', toggleBodyOverflow)
@@ -44,8 +46,7 @@ const VanillaBox = ({ GalleryImages, Lightbox, animationClass }: ILightboxConfig
   }
   GalleryImages.forEach((image, index) =>
     image.addEventListener('click', () => {
-      LightboxDialog.show()
-      changeImage(index)
+      changeImage(index).then(() => !LightboxDialog.shown && LightboxDialog.show())
     })
   )
 }
