@@ -63,7 +63,7 @@ VanillaBox({ GalleryImages, Lightbox, animationClass })
 You gonna need some basic styles. If you’re using SASS we got you cover. Just import into your sass file as follow
 
 ```scss
-import "~vanillabox/src/scss/main";
+@import '~vanillabox/src/scss/main';
 ```
 
 #### SCSS Variables
@@ -71,15 +71,15 @@ import "~vanillabox/src/scss/main";
 Using SASS/SCSS instead of CSS has the advantage to customize some aspects of the Lightbox. Here are them:
 
 ```scss
-$block: 'lightbox'; // The name of the base selector for all classes
+$tmlb-block: 'lightbox'; // Name of the base selector for all classes
 
-$pre-animation-transform: scale(
-  0.75
-); // If any transformation is needed for .lightbox__image before in
-$animating-class: 'is-animating'; // animating class (should match the used in the Javascript)
-$animation-name: fadeIn; // The animation name should be used once the .lightbox__image is animating
-$animation-duration: 500ms; // animation duration
-$animation-timming: cubic-bezier(0.86, 0, 0.07, 1); //timming-function
+$tmlb-pre-animation-transform: scale(0.98); // Transformation(s) needed for .lightbox__image before in
+$tmlb-animating-class: 'is--animating'; // Animating class (should match the used in the Javascript)
+$tmlb-animation-name: fadeIn; // Animation name would be used once the .lightbox__image.is--animating
+$tmlb-animation-duration: 500ms; // Animation duration
+$tmlb-animation-timming: cubic-bezier(0.86, 0, 0.07, 1); // Animation timming-function
+$tmlb-max-image-width: 960px; // max width for the .lightbox__image
+$tmlb-max-image-height: 520px; // max height for the .lightbox__image
 ```
 
 #### Using with CSS
@@ -108,20 +108,17 @@ I decided to be very liberal with the markup and let decide to you. Even thou, w
     <div class="lightbox-overlay" tabindex="-1" data-a11y-dialog-hide></div>
     <div role="dialog" class="lightbox">
       <button type="button" class="lightbox__close" data-a11y-dialog-hide aria-label="Cerrar lightbox">
-        ⬅️
+        ✖️
       </button>
       <div role="document" aria-labelledby="lightbox__image">
         <button class="lightbox-controls__prev" data-action="prev" aria-label="Imagen Anterior">
-          ➡️
+          ⬅️
         </button>
         <button class="lightbox-controls__next" data-action="next" aria-label="Imagen Siguiente">
-          <svg fill="#fff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(180deg);">
-            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
-            <path d="M0 0h24v24H0z" fill="none" />
-          </svg><!-- this is an Material Icon for an arrow-->
+          ➡️
         </button>
         <div class="lightbox-image">
-          <img id="lightbox__image" tabindex="-1" src="" class="lightbox__image" alt="'>
+          <img id="lightbox__image" tabindex="-1" src="" class="lightbox__image" alt="">
         </div>
         <!-- /.lightbox-image -->
       </div>
@@ -162,6 +159,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 * Need
 
 ## What’s next?
+
 * Add keyboard support
 * Add Jest test
 * Add more freedom to choose the markup and other configs
@@ -169,4 +167,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 * Support a full gallery
 * Add more options
 * Optimize code
-* Disable Carrousel Mode# VanillaBox
+* Disable Carrousel Mode

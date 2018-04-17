@@ -100,19 +100,19 @@ VanillaBox({ GalleryImages, Lightbox, animationClass })
 				<h3 id="the-s-css">The (S)CSS</h3>
 				<h4 id="using-scss">Using SCSS</h4>
 				<p>You gonna need some basic styles. If you’re using SASS we got you cover. Just import into your sass file as follow</p>
-				<pre><code class="lang-scss">import &quot;~vanillabox/src/scss/main&quot;;
+				<pre><code class="lang-scss">@<span class="hljs-keyword">import</span> <span class="hljs-string">'~vanillabox/src/scss/main'</span>;
 </code></pre>
 				<h4 id="scss-variables">SCSS Variables</h4>
 				<p>Using SASS/SCSS instead of CSS has the advantage to customize some aspects of the Lightbox. Here are them:</p>
-				<pre><code class="lang-scss"><span class="hljs-variable">$block</span>: <span class="hljs-string">'lightbox'</span>; <span class="hljs-comment">// The name of the base selector for all classes</span>
+				<pre><code class="lang-scss"><span class="hljs-variable">$tmlb-block</span>: <span class="hljs-string">'lightbox'</span>; <span class="hljs-comment">// Name of the base selector for all classes</span>
 
-<span class="hljs-variable">$pre-animation-transform</span>: scale(
-  <span class="hljs-number">0.75</span>
-); <span class="hljs-comment">// If any transformation is needed for .lightbox__image before in</span>
-<span class="hljs-variable">$animating-class</span>: <span class="hljs-string">'is-animating'</span>; <span class="hljs-comment">// animating class (should match the used in the Javascript)</span>
-<span class="hljs-variable">$animation-name</span>: fadeIn; <span class="hljs-comment">// The animation name should be used once the .lightbox__image is animating</span>
-<span class="hljs-variable">$animation-duration</span>: <span class="hljs-number">500ms</span>; <span class="hljs-comment">// animation duration</span>
-<span class="hljs-variable">$animation-timming</span>: cubic-bezier(<span class="hljs-number">0.86</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.07</span>, <span class="hljs-number">1</span>); <span class="hljs-comment">//timming-function</span>
+<span class="hljs-variable">$tmlb-pre-animation-transform</span>: scale(<span class="hljs-number">0.98</span>); <span class="hljs-comment">// Transformation(s) needed for .lightbox__image before in</span>
+<span class="hljs-variable">$tmlb-animating-class</span>: <span class="hljs-string">'is--animating'</span>; <span class="hljs-comment">// Animating class (should match the used in the Javascript)</span>
+<span class="hljs-variable">$tmlb-animation-name</span>: fadeIn; <span class="hljs-comment">// Animation name would be used once the .lightbox__image.is--animating</span>
+<span class="hljs-variable">$tmlb-animation-duration</span>: <span class="hljs-number">500ms</span>; <span class="hljs-comment">// Animation duration</span>
+<span class="hljs-variable">$tmlb-animation-timming</span>: cubic-bezier(<span class="hljs-number">0.86</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.07</span>, <span class="hljs-number">1</span>); <span class="hljs-comment">// Animation timming-function</span>
+<span class="hljs-variable">$tmlb-max-image-width</span>: <span class="hljs-number">960px</span>; <span class="hljs-comment">// max width for the .lightbox__image</span>
+<span class="hljs-variable">$tmlb-max-image-height</span>: <span class="hljs-number">520px</span>; <span class="hljs-comment">// max height for the .lightbox__image</span>
 </code></pre>
 				<h4 id="using-with-css">Using with CSS</h4>
 				<p>Add a good <code>link</code> tag at any place in your html file pointing to our precompiled css file</p>
@@ -132,27 +132,24 @@ VanillaBox({ GalleryImages, Lightbox, animationClass })
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"lightbox-overlay"</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">"-1"</span> <span class="hljs-attr">data-a11y-dialog-hide</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"dialog"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"lightbox"</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"lightbox__close"</span> <span class="hljs-attr">data-a11y-dialog-hide</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">"Cerrar lightbox"</span>&gt;</span>
-        ⬅️
+        ✖️
       <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"document"</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">"lightbox__image"</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"lightbox-controls__prev"</span> <span class="hljs-attr">data-action</span>=<span class="hljs-string">"prev"</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">"Imagen Anterior"</span>&gt;</span>
-          ➡️
+          ⬅️
         <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"lightbox-controls__next"</span> <span class="hljs-attr">data-action</span>=<span class="hljs-string">"next"</span> <span class="hljs-attr">aria-label</span>=<span class="hljs-string">"Imagen Siguiente"</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">"#fff"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"24"</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">"0 0 24 24"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"24"</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.w3.org/2000/svg"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"transform: rotate(180deg);"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">path</span> <span class="hljs-attr">d</span>=<span class="hljs-string">"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"</span> /&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">path</span> <span class="hljs-attr">d</span>=<span class="hljs-string">"M0 0h24v24H0z"</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">"none"</span> /&gt;</span>
-          <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span><span class="hljs-comment">&lt;!-- this is an Material Icon for an arrow--&gt;</span>
+          ➡️
         <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
         <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"lightbox-image"</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"lightbox__image"</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">"-1"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">""</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"lightbox__image"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"'&gt;
-        &lt;/div&gt;
-        &lt;!-- /.lightbox-image --&gt;
-      &lt;/div&gt;
-      &lt;!-- /.lightbox-content --&gt;
-    &lt;/div&gt;
-    &lt;!-- /.lightbox --&gt;
-  &lt;/div&gt;</span></span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"lightbox__image"</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">"-1"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">""</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"lightbox__image"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">""</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- /.lightbox-image --&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- /.lightbox-content --&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- /.lightbox --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
 				<h2 id="built-with">Built With</h2>
 				<ul>
@@ -186,7 +183,7 @@ VanillaBox({ GalleryImages, Lightbox, animationClass })
 					<li>Support a full gallery</li>
 					<li>Add more options</li>
 					<li>Optimize code</li>
-					<li>Disable Carrousel Mode# VanillaBox</li>
+					<li>Disable Carrousel Mode</li>
 				</ul>
 			</div>
 		</div>
