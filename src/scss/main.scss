@@ -1,23 +1,25 @@
-$block: 'lightbox';
+$tmlb-block: 'lightbox'; // Name of the base selector for all classes
 
-$pre-animation-transform: scale(0.75);
-$animation-name: fadeIn;
-$animation-duration: 500ms;
-$animation-timming: cubic-bezier(0.86, 0, 0.07, 1);
-$animating-class: 'is-animating';
+$tmlb-pre-animation-transform: scale(0.98); // Transformation(s) needed for .lightbox__image before in
+$tmlb-animating-class: 'is--animating'; // Animating class (should match the used in the Javascript)
+$tmlb-animation-name: fadeIn; // Animation name would be used once the .lightbox__image.is--animating
+$tmlb-animation-duration: 750ms; // Animation duration
+$tmlb-animation-timming: ease-in-out; // Animation timming-function
+$tmlb-max-image-width: 960px; // max width for the .lightbox__image
+$tmlb-max-image-height: 520px; // max height for the .lightbox__image
 
-.#{$block}-container,
-.#{$block}-container::after,
-.#{$block}-container::before,
-.#{$block}-container *,
-.#{$block}-container *::after,
-.#{$block}-container *::before {
+.#{$tmlb-block}-container,
+.#{$tmlb-block}-container::after,
+.#{$tmlb-block}-container::before,
+.#{$tmlb-block}-container *,
+.#{$tmlb-block}-container *::after,
+.#{$tmlb-block}-container *::before {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-.#{$block}-container {
+.#{$tmlb-block}-container {
   height: 100vh;
   left: 0;
   opacity: 1;
@@ -29,7 +31,11 @@ $animating-class: 'is-animating';
   width: 100%;
   will-change: transform, opacity;
 
-  .#{$block}-overlay {
+  &[aria-hidden] {
+    transform: scale(0);
+  }
+
+  .#{$tmlb-block}-overlay {
     background-color: #121212;
     bottom: 0;
     left: 0;
@@ -39,14 +45,14 @@ $animating-class: 'is-animating';
     top: 0;
   }
 
-  .#{$block}-container[aria-hidden='true'] {
+  .#{$tmlb-block}-container[aria-hidden='true'] {
     opacity: 0;
     transform: scale(0);
   }
 
-  .#{$block}__close,
-  .#{$block}-controls__prev,
-  .#{$block}-controls__next {
+  .#{$tmlb-block}__close,
+  .#{$tmlb-block}-controls__prev,
+  .#{$tmlb-block}-controls__next {
     background: rgba(10, 10, 10, 0.58);
     background: transparent;
     border: 0;
@@ -59,33 +65,33 @@ $animating-class: 'is-animating';
     width: 2rem;
   }
 
-  .#{$block}__close:focus,
-  .#{$block}-controls__prev:focus,
-  .#{$block}-controls__next:focus {
+  .#{$tmlb-block}__close:focus,
+  .#{$tmlb-block}-controls__prev:focus,
+  .#{$tmlb-block}-controls__next:focus {
     outline: 1px solid rgba(150, 150, 150, 0.8);
     outline-offset: 0.25em;
   }
 
-  .#{$block}-controls__prev,
-  .#{$block}-controls__next {
+  .#{$tmlb-block}-controls__prev,
+  .#{$tmlb-block}-controls__next {
     top: 50%;
     transform: translate3d(0%, -50%, 0);
   }
 
-  .#{$block}__close {
+  .#{$tmlb-block}__close {
     right: 1.5rem;
     top: 1.5rem;
   }
 
-  .#{$block}-controls__prev {
+  .#{$tmlb-block}-controls__prev {
     left: 1.5rem;
   }
 
-  .#{$block}-controls__next {
+  .#{$tmlb-block}-controls__next {
     right: 1.5rem;
   }
 
-  .#{$block}-image {
+  .#{$tmlb-block}-image {
     align-items: center;
     display: flex;
     justify-content: center;
@@ -95,28 +101,27 @@ $animating-class: 'is-animating';
     transform: translate3d(-50%, -50%, 0);
     width: 75%;
 
-    .#{$block}__image {
+    .#{$tmlb-block}__image {
       border-radius: 4px;
+      max-height: $tmlb-max-image-height;
+      max-width: $tmlb-max-image-width;
+      object-fit: cover;
       width: 100%;
 
-      &.#{$animating-class} {
-        animation: $animation-name $animation-duration $animation-timming;
+      &.#{$tmlb-animating-class} {
+        animation: $tmlb-animation-name $tmlb-animation-duration $tmlb-animation-timming;
         opacity: 0;
-        transform: $pre-animation-transform;
+        transform: $tmlb-pre-animation-transform;
       }
     }
   }
 }
 
 @keyframes fadeIn {
-  45% {
-    opacity: 1;
+  85% {
+    transform: scale(1);
   }
-
-  50% {
-    transform: scale(1.05);
-  }
-
+  
   100% {
     opacity: 1;
     transform: scale(1);
